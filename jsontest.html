@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let user = {
+        id: 1,
+        username: "ssar",
+      };
+
+      let jsonUser = JSON.stringify(user);
+      console.log(user);
+      fetch("http://10.100.102.2:8080/api/movie", {
+        method: "post",
+        headers: {
+          ContentType: "application/json; charset=utf-8",
+        },
+        body: jsonUser,
+      })
+        .then((res) => res.text())
+        .then((res) => {
+          if (res === "ok") {
+            alert("입력 성공");
+          }
+        });
+    </script>
+  </body>
+</html>
